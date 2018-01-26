@@ -1,0 +1,20 @@
+{
+  "name": "slotmachine",
+  "description": "Small description for slotmachine goes here",
+  "main": "",
+  "authors": [
+    "aaronlelevier <pyaaron@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery-SlotMachine": "jquery-slotmachine#^3.0.1"
+  }
+}
