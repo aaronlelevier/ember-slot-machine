@@ -3,50 +3,50 @@ import {get,
   set
 } from '@ember/object';
 
-var REEL = [];
+var RESULTS = [];
 
 export default Component.extend({
   /*
    * Sets up Component VARs:
-   * - machine1, machine2
+   * - reel1, reel2
    */
   didInsertElement: function() {
-    let machine1 = this.$('.machine1').slotMachine({
+    let reel1 = this.$('.reel1').slotMachine({
       active: 0,
       delay: 100
     });
-    set(this, 'machine1', machine1);
+    set(this, 'reel1', reel1);
 
-    let machine2 = this.$('.machine2').slotMachine({
+    let reel2 = this.$('.reel2').slotMachine({
       active: 1,
       delay: 200
     });
-    set(this, 'machine2', machine2);
+    set(this, 'reel2', reel2);
 
-    let machine3 = this.$('.machine3').slotMachine({
+    let reel3 = this.$('.reel3').slotMachine({
       active: 1,
       delay: 300
     });
-    set(this, 'machine3', machine3);
+    set(this, 'reel3', reel3);
   },
   onComplete(active) {
-    REEL.push(active);
-    if (REEL.length == 2) {
-      if (REEL[0] == REEL[1]) {
-        console.log(`win: ${REEL[0]} ${REEL[1]}`);
+    RESULTS.push(active);
+    if (RESULTS.length == 2) {
+      if (RESULTS[0] == RESULTS[1]) {
+        console.log(`win: ${RESULTS[0]} ${RESULTS[1]}`);
       } else {
-        console.log(`loss: ${REEL[0]} ${REEL[1]}`);
+        console.log(`loss: ${RESULTS[0]} ${RESULTS[1]}`);
       }
     }
   },
   actions: {
     shuffle() {
       // clear rell for start
-      REEL = [];
-      // shuffle slot machine
-      get(this, 'machine1').shuffle(5, this.onComplete);
-      get(this, 'machine2').shuffle(5, this.onComplete);
-      get(this, 'machine3').shuffle(5, this.onComplete);
+      RESULTS = [];
+      // shuffle slot reel
+      get(this, 'reel1').shuffle(5, this.onComplete);
+      get(this, 'reel2').shuffle(5, this.onComplete);
+      get(this, 'reel3').shuffle(5, this.onComplete);
     }
   }
 });
