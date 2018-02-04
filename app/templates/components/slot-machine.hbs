@@ -1,22 +1,22 @@
-<div id="randomize">
-  <div class="content container" style="text-align: center;max-width: 900px;">
+<div id="randomize" class="content container" style="text-align: center;max-width: 900px;">
+  <div class="slot-machine">
     <h1>Slot Machine Demo!</h1>
     <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-        <div class="col-xs-4">
-          <div>
-            {{slot-reel reelName="reel1"}}
-          </div>
+      <div class="parent-flex">
+        <div class="child-flex">
+          {{slot-reel reelName="reel1"}}
         </div>
-        <div class="col-xs-4">
-          <div>
-            {{slot-reel reelName="reel2"}}
-          </div>
+        <div class="child-flex">
+          {{slot-reel reelName="reel2"}}
         </div>
-        <div class="col-xs-4">
-          <div>
-            {{slot-reel reelName="reel3"}}
-          </div>
+        <div class="child-flex">
+          {{slot-reel reelName="reel3"}}
+        </div>
+        <div class="child-flex">
+          {{slot-reel reelName="reel4"}}
+        </div>
+        <div class="child-flex">
+          {{slot-reel reelName="reel5"}}
         </div>
       </div>
     </div>
@@ -24,4 +24,9 @@
       <input class="btn btn-success" type="submit" value="Play" onclick={{action "shuffle"}}>
     </div>
   </div>
+
+  <div class="row rotate-to-landscape-for-mobile-hint" style="text-align: center">
+    <h2>Rotate device to landscape for mobile</h2>
+  </div>
+
 </div>

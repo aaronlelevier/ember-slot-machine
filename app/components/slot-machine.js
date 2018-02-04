@@ -4,40 +4,39 @@ import {
   set
 } from '@ember/object';
 
-var RESULTS = [];
+let RESULTS = [];
+const NUMBER_OF_REELS = 5;
 
 export default Component.extend({
+  // At this point jQuery onWindow load has completed
+  // Calling this makes sure that only 3 slot reel icons are showing
   didInsertElement: function() {
-    this.setReel('reel1', 0, 100);
-    this.setReel('reel2', 0, 200);
-    this.setReel('reel3', 0, 300);
+    for (let i=1; i<NUMBER_OF_REELS+1; i++) {
+      this.setReel(`reel${i}`, i*50);
+    }
   },
-  setReel(name, active, delay) {
+  setReel(name, delay) {
     let reel = this.$(`.${name}`).slotMachine({
-      active,
+      active: 0,
       delay
     });
     set(this, name, reel);
   },
   onComplete(active) {
     RESULTS.push(active);
-    if (RESULTS.length == 3) {
-      if (RESULTS[0] == RESULTS[1]) {
-        console.log(`win`);
-      } else {
-        console.log(`loss`);
-      }
-      console.log(`${RESULTS[0]} ${RESULTS[1]} ${RESULTS[2]}`);
+    if (RESULTS.length == NUMBER_OF_REELS) {
+      console.log(`Results: ${RESULTS}`);
     }
   },
   actions: {
+    // call to spin the slot reels
     shuffle() {
-      // clear rell for start
+      // reset reel for start
       RESULTS = [];
-      // shuffle slot reel
-      get(this, 'reel1').shuffle(5, this.onComplete);
-      get(this, 'reel2').shuffle(5, this.onComplete);
-      get(this, 'reel3').shuffle(5, this.onComplete);
+
+      for (let i=1; i<NUMBER_OF_REELS+1; i++) {
+        get(this, `reel${i}`).shuffle(5, this.onComplete);
+      }
     }
   }
 });

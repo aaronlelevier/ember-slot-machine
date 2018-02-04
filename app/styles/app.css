@@ -1,4 +1,29 @@
+.parent-flex {
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
+.child-flex {
+  width: auto;
+  height: auto;
+  flex: 1;
+  flex-basis: 20%;
+}
 .randomizeMachine {
-    padding-top: 20px;
-    height: 300px;
+  padding-top: 20px;
+  height: 300px;
+}
+.rotate-to-landscape-for-mobile-hint {
+  display: none;
+}
+
+/* Hide slot machine if in portrait mode for mobile because not enough
+space and show "rotate device" hint */
+@media (max-width: 600px) {
+  .slot-machine {
+    display: none;
+  }
+  .rotate-to-landscape-for-mobile-hint {
+    display: block;
+  }
 }
