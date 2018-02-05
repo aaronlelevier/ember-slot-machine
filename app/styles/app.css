@@ -19,7 +19,7 @@
 
 /* Hide slot machine if in portrait mode for mobile because not enough
 space and show "rotate device" hint */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .slot-machine {
     display: none;
   }
